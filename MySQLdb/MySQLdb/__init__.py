@@ -19,7 +19,7 @@ version_info = (
     1,
     0,
     1,
-    "beta",
+    "gamma",
     1)
 if version_info[3] == "final": __version__ = "%d.%d.%d" % version_info[:3]
 else: __version__ = "%d.%d.%d%1.1s%d" % version_info[:5]
