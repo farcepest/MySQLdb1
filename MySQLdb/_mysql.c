@@ -434,7 +434,7 @@ _mysql_ConnectionObject_Initialize(
 	MYSQL *conn=NULL;
 	PyObject *conv = NULL;
 	PyObject *ssl = NULL;
-	PyObject *value = NULL;;
+	PyObject *value = NULL;
 	char *key = NULL, *cert = NULL, *ca = NULL,
 		*capath = NULL, *cipher = NULL;
 	char *host = NULL, *user = NULL, *passwd = NULL,
