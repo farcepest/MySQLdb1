@@ -254,7 +254,7 @@ static PyObject *_mysql_server_init(
 			}
 			groups_c[i] = s;
 		}
-		groups_c[groupc+1] = (char *)NULL;
+		groups_c[groupc] = (char *)NULL;
 	}
 	/* even though this may block, don't give up the interpreter lock
 	   so that the server can't be initialized multiple times. */
