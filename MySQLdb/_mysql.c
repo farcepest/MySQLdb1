@@ -32,10 +32,10 @@ PERFORMANCE OF THIS SOFTWARE.
 
 #ifdef MS_WIN32
 #include <windows.h>
+#endif /* MS_WIN32 */
 #ifndef uint
 #define uint unsigned int
 #endif
-#endif /* MS_WIN32 */
 
 #include "structmember.h"
 #include "mysql.h"
