@@ -1,4 +1,4 @@
-#define version_info "(1,0,0,'gamma',1)"
+#define version_info "(1,0,0,'gamma',2)"
 #define __version__ "1.0.0"
 /*
 This program is free software; you can redistribute it and/or modify
