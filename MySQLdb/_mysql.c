@@ -1,5 +1,5 @@
-#define version_info "(0,9,3,'beta',3)"
-#define __version__ "0.9.3"
+#define version_info "(1,0,0,'gamma',1)"
+#define __version__ "1.0.0"
 /*
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
