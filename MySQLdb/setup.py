@@ -10,7 +10,7 @@ import string
 YES = 1
 NO = 0
 
-mysqlclient = os.getenv('mysqlclient', 'mysqlclient')
+mysqlclient = os.environ.get('mysqlclient', 'mysqlclient')
 mysqlversion = tuple(map(int, string.split(os.getenv('mysqlversion', '3.23.32'), '.')))
 mysqloptlibs = string.split(os.getenv('mysqloptlibs', ''))
 embedded_server = (mysqlclient == 'mysqld')
@@ -18,7 +18,7 @@ embedded_server = (mysqlclient == 'mysqld')
 name = "MySQL-%s" % os.path.basename(sys.executable)
 if embedded_server:
     name = name + "-embedded"
-version = "1.0.0"
+version = "1.0.1b1"
 
 # include files and library locations should cover most platforms
 include_dirs = [
