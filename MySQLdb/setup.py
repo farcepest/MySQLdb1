@@ -66,6 +66,8 @@ elif sys.platform == "sunos5": # Solaris 2.8 + gcc
 elif sys.platform == "win32": # Ugh
     include_dirs = [r'c:\mysql\include']
     library_dirs = [r'c:\mysql\lib\opt']
+    libraries.remove('z')
+    libraries.remove('crypt')
     libraries.extend(['zlib', 'msvcrt', 'libcmt', 'wsock32', 'advapi32'])
     extra_objects = [r'c:\mysql\lib\opt\mysqlclient.lib']
 elif sys.platform == "cygwin":
