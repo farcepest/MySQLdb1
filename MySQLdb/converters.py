@@ -53,10 +53,6 @@ try:
 except AttributeError:
     ArrayType = array.array
 
-try:
-    set
-except NameError:
-    from sets import Set as set
 
 def Bool2Str(s, d): return str(int(s))
 

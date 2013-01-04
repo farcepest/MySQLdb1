@@ -7,6 +7,8 @@ default, MySQLdb uses the Cursor class.
 
 import re
 import sys
+import six
+
 try:
     from types import ListType, TupleType, UnicodeType
 except ImportError:
@@ -25,7 +27,7 @@ restr = r"""
             (?:
                 (?:
                         (?:\(
-                            # ( - editor hightlighting helper
+                            # ( - editor highlighting helper
                             [^)]*
                         \))
                     |
@@ -177,14 +179,14 @@ class BaseCursor(object):
         """
         del self.messages[:]
         db = self._get_db()
-        if isinstance(query, unicode):
+        if isinstance(query, six.text_type):
             query = query.encode(db.unicode_literal.charset)
         if args is not None:
             query = query % db.literal(args)
         try:
             r = None
             r = self._query(query)
-        except TypeError, m:
+        except TypeError as m:
             if m.args[0] in ("not enough arguments for format string",
                              "not all arguments converted"):
                 self.messages.append((ProgrammingError, m.args[0]))
@@ -224,7 +226,7 @@ class BaseCursor(object):
         del self.messages[:]
         db = self._get_db()
         if not args: return
-        if isinstance(query, unicode):
+        if isinstance(query, six.text_type):
             query = query.encode(db.unicode_literal.charset)
         m = insert_values.search(query)
         if not m:
@@ -237,7 +239,7 @@ class BaseCursor(object):
         qv = m.group(1)
         try:
             q = [ qv % db.literal(a) for a in args ]
-        except TypeError, msg:
+        except TypeError as msg:
             if msg.args[0] in ("not enough arguments for format string",
                                "not all arguments converted"):
                 self.errorhandler(self, ProgrammingError, msg.args[0])
@@ -287,7 +289,7 @@ class BaseCursor(object):
         for index, arg in enumerate(args):
             q = "SET @_%s_%d=%s" % (procname, index,
                                          db.literal(arg))
-            if isinstance(q, unicode):
+            if isinstance(q, six.text_type):
                 q = q.encode(db.unicode_literal.charset)
             self._query(q)
             self.nextset()

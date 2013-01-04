@@ -12,6 +12,7 @@ from _mysql_exceptions import Warning, Error, InterfaceError, DataError, \
      NotSupportedError, ProgrammingError
 import types, _mysql
 import re
+import six
 
 
 def defaulterrorhandler(connection, cursor, errorclass, errorvalue):
@@ -33,7 +34,7 @@ def defaulterrorhandler(connection, cursor, errorclass, errorvalue):
         connection.messages.append(error)
     del cursor
     del connection
-    raise errorclass, errorvalue
+    six.reraise(errorclass, errorvalue)
 
 re_numeric_part = re.compile(r"^(\d+)")
 
@@ -145,7 +146,7 @@ class Connection(_mysql.connection):
         """
         from MySQLdb.constants import CLIENT, FIELD_TYPE
         from MySQLdb.converters import conversions
-        from weakref import proxy, WeakValueDictionary
+        from weakref import proxy
         
         import types
 
